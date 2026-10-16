@@ -833,6 +833,42 @@
   .catBody .faqAns p{ font-size:12.5px; }
   .catBody .faqSteps{ grid-template-columns:minmax(0,1fr); gap:10px; }
   @media (min-width:1080px){ .catBody .faqSteps{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
+
+  /* ---------- FAQ · categorías como modales ---------- */
+  .catGrid{ align-items:stretch; }
+  .catBlock{ appearance:none; -webkit-appearance:none; border:0; width:100%; height:100%; text-align:left; font-family:inherit; cursor:pointer; background:var(--surface); border-radius:16px; display:flex; align-items:center; gap:14px; padding:22px 24px; color:var(--fg); transition:box-shadow .25s ease, background-color .25s ease; }
+  .catBlock:hover{ background:var(--bg); box-shadow:0 0 0 1px var(--line), 0 22px 48px -30px rgba(51,58,60,.5); }
+  .catBlock:focus-visible{ outline:2px solid var(--fg); outline-offset:3px; }
+  .catBlock .cico{ width:42px; height:42px; border-radius:12px; background:var(--bg); box-shadow:0 0 0 1px var(--line); display:grid; place-items:center; flex:none; color:var(--fg); transition:background-color .25s ease; }
+  .catBlock:hover .cico{ background:var(--surface); }
+  .catBlock .cico svg{ width:21px; height:21px; }
+  .catBlock .ct{ flex:1; display:flex; flex-direction:column; gap:4px; }
+  .catBlock .ct h2{ font-family:var(--display); font-weight:400; font-size:18px; line-height:1.2; letter-spacing:.01em; }
+  .catBlock .ct .meta{ font-size:10px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
+  .catBlock-go{ width:18px; height:18px; flex:none; color:var(--soft); transition:transform .25s ease, color .25s ease; }
+  .catBlock:hover .catBlock-go{ color:var(--fg); transform:translate(2px,-2px); }
+
+  .catModal{ border:0; padding:0; background:transparent; max-width:none; max-height:none; color:var(--fg); }
+  .catModal::backdrop{ background:rgba(28,27,25,.55); }
+  .catModal-in{ background:var(--bg); border-radius:18px; width:min(640px,calc(100vw - 32px)); max-height:min(84vh,780px); overflow-y:auto; padding:26px 28px 30px; box-shadow:0 40px 90px -28px rgba(51,58,60,.6); }
+  .catModal-head{ display:flex; align-items:center; gap:14px; padding-bottom:16px; margin-bottom:2px; border-bottom:1px solid var(--line); }
+  .catModal-head .cico{ width:40px; height:40px; border-radius:11px; background:var(--surface); display:grid; place-items:center; flex:none; color:var(--fg); }
+  .catModal-head .cico svg{ width:20px; height:20px; }
+  .catModal-head .catModal-t{ flex:1; font-family:var(--display); font-weight:400; font-size:20px; letter-spacing:.01em; }
+  .catModal-in .faqList{ margin-top:0; border-top:0; }
+  .catModal-x{ appearance:none; -webkit-appearance:none; border:0; background:var(--surface); width:34px; height:34px; border-radius:50%; display:grid; place-items:center; cursor:pointer; color:var(--fg); flex:none; transition:background-color .2s ease; }
+  .catModal-x:hover{ background:var(--surface-deep); }
+  .catModal-x svg{ width:16px; height:16px; }
+  .catModal[open]{ animation:catModalIn .26s cubic-bezier(.2,.7,.3,1); }
+  .catModal[open]::backdrop{ animation:catBackdropIn .26s ease; }
+  @keyframes catModalIn{ from{ opacity:0; transform:translateY(10px) scale(.99); } to{ opacity:1; transform:none; } }
+  @keyframes catBackdropIn{ from{ opacity:0; } to{ opacity:1; } }
+  @media (prefers-reduced-motion:reduce){ .catModal[open]{ animation:none; } .catModal[open]::backdrop{ animation:none; } }
+  @media (max-width:600px){
+    .catModal{ margin:auto auto 0; }
+    .catModal-in{ width:100vw; max-width:100vw; max-height:92vh; border-radius:18px 18px 0 0; padding:22px 20px 26px; }
+    @keyframes catModalIn{ from{ opacity:0; transform:translateY(24px); } to{ opacity:1; transform:none; } }
+  }
   .catItem .cico{ width:42px; height:42px; border-radius:12px; background:var(--bg); box-shadow:0 0 0 1px var(--line); display:grid; place-items:center; flex:none; color:var(--fg); transition:background-color .25s ease; }
   .catItem[open] .cico{ background:var(--surface); }
   .catItem .cico svg{ width:21px; height:21px; }
@@ -959,14 +995,16 @@
   <!-- ============ TODAS LAS PREGUNTAS POR CATEGORÍA ============ -->
   <section class="wrap sec" id="categorias">
     <div class="ruleHead"><p class="eyebrow">Explora por categoría</p><span class="rule"></span></div>
-    <p class="body" style="margin-top:16px;">Elige un tema y despliega todas sus preguntas relacionadas.</p>
+    <p class="body" style="margin-top:16px;">Elige un tema y ábrelo para ver todas sus preguntas.</p>
 
     <div class="catGrid">
 
         <!-- 1 · Muestras -->
-        <details class="catItem" id="muestras">
-          <summary><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"></rect></svg></span><span class="ct"><h2>Muestras de tejidos</h2><span class="meta">3 preguntas</span></span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="catBody"><div class="faqList">
+        <button class="catBlock" type="button" data-modal="m-muestras"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"></rect></svg></span><span class="ct"><h2>Muestras de tejidos</h2><span class="meta">3 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+        <dialog class="catModal" id="m-muestras" aria-label="Muestras de tejidos">
+          <div class="catModal-in">
+            <div class="catModal-head"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"></rect></svg></span><h2 class="catModal-t">Muestras de tejidos</h2><button class="catModal-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button></div>
+            <div class="faqList">
             <details id="q-muestra-pedir">
               <summary><h3>¿Se puede pedir una muestra de tejido antes de comprar una alfombra?</h3><span class="pm" aria-hidden="true"></span></summary>
               <div class="faqAns"><p>Sí y de hecho lo recomendamos. Aunque tengamos fotografías con buena definición, no es lo mismo ver el tejido a través de una pantalla que tenerlo en tus manos. Puedes solicitar las muestras en la ficha de cada producto a un coste de 5€ por unidad.</p></div>
@@ -979,13 +1017,16 @@
               <summary><h3>¿Cuánto tardáis en enviar las muestras?</h3><span class="pm" aria-hidden="true"></span></summary>
               <div class="faqAns"><p>Normalmente deberías poder recibir las muestras en tu casa en menos de 48h desde que hiciste el pedido.</p></div>
             </details>
-          </div></div>
-        </details>
+            </div>
+          </div>
+        </dialog>
 
         <!-- 2 · A medida -->
-        <details class="catItem" id="a-medida">
-          <summary><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="8" width="19" height="8" rx="1.5"></rect><path d="M6.5 8v3M10 8v4M13.5 8v3M17 8v4"></path></svg></span><span class="ct"><h2>Alfombra a medida</h2><span class="meta">4 preguntas</span></span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="catBody"><div class="faqList">
+        <button class="catBlock" type="button" data-modal="m-a-medida"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="8" width="19" height="8" rx="1.5"></rect><path d="M6.5 8v3M10 8v4M13.5 8v3M17 8v4"></path></svg></span><span class="ct"><h2>Alfombra a medida</h2><span class="meta">4 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+        <dialog class="catModal" id="m-a-medida" aria-label="Alfombra a medida">
+          <div class="catModal-in">
+            <div class="catModal-head"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="8" width="19" height="8" rx="1.5"></rect><path d="M6.5 8v3M10 8v4M13.5 8v3M17 8v4"></path></svg></span><h2 class="catModal-t">Alfombra a medida</h2><button class="catModal-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button></div>
+            <div class="faqList">
             <details>
               <summary><h3>¿Cómo funciona el proceso de confección de alfombras a medida?</h3><span class="pm" aria-hidden="true"></span></summary>
               <div class="faqAns"><p>En Rols confeccionamos tu alfombra a medida para que se adapte perfectamente a tu espacio. Podemos confeccionar alfombras cuadradas, rectangulares o circulares. El ancho y largo máximo depende de cada referencia. Las medidas máximas que podemos confeccionar aparecen reflejadas en la ficha de producto.</p></div>
@@ -1002,13 +1043,16 @@
               <summary><h3>¿Las medidas de la alfombra que pida van a ser exactas?</h3><span class="pm" aria-hidden="true"></span></summary>
               <div class="faqAns"><p>Los cortes que realizamos a las alfombras son manuales, y están sujetos a una pequeña variación de medida de +/- 2 cm en su medida final, entrando dentro de la tolerancia textil, sin ser motivo de reclamación.</p></div>
             </details>
-          </div></div>
-        </details>
+            </div>
+          </div>
+        </dialog>
 
         <!-- 3 · Envíos -->
-        <details class="catItem" id="envios">
-          <summary><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18" r="1.6"></circle><circle cx="17.5" cy="18" r="1.6"></circle></svg></span><span class="ct"><h2>Envíos</h2><span class="meta">4 preguntas</span></span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="catBody"><div class="faqList">
+        <button class="catBlock" type="button" data-modal="m-envios"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18" r="1.6"></circle><circle cx="17.5" cy="18" r="1.6"></circle></svg></span><span class="ct"><h2>Envíos</h2><span class="meta">4 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+        <dialog class="catModal" id="m-envios" aria-label="Envíos">
+          <div class="catModal-in">
+            <div class="catModal-head"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18" r="1.6"></circle><circle cx="17.5" cy="18" r="1.6"></circle></svg></span><h2 class="catModal-t">Envíos</h2><button class="catModal-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button></div>
+            <div class="faqList">
             <details id="q-envio-zona">
               <summary><h3>¿A qué países enviamos?</h3><span class="pm" aria-hidden="true"></span></summary>
               <div class="faqAns"><p>Por medio de nuestro E-Commerce enviamos exclusivamente a España Peninsular e Islas Baleares (no enviamos a Ceuta, Melilla e Islas Canarias). Si resides en otro país y tienes interés en adquirir nuestras alfombras, puedes consultar nuestra red de tiendas físicas <a class="inl" href="https://www.rolscarpets.com/mapa-de-tiendas/">aquí</a>.</p></div>
@@ -1025,13 +1069,16 @@
               <summary><h3>¿Cómo puedo reprogramar mi entrega?</h3><span class="pm" aria-hidden="true"></span></summary>
               <div class="faqAns"><p>Tienes 24 horas tras la compra para reprogramar su entrega. Para cualquier cambio fuera de este plazo, ponte en contacto con nuestro equipo de Atención al Cliente en <a class="inl" href="mailto:info@rolscarpets.com">info@rolscarpets.com</a>. Ten en cuenta que la reprogramación puede conllevar gastos adicionales, que se decidirán caso por caso.</p></div>
             </details>
-          </div></div>
-        </details>
+            </div>
+          </div>
+        </dialog>
 
         <!-- 4 · Devoluciones -->
-        <details class="catItem" id="devoluciones">
-          <summary><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h9a5.5 5.5 0 0 1 0 11h-4"></path><polyline points="7.5 5.5 4 9 7.5 12.5"></polyline></svg></span><span class="ct"><h2>Devoluciones e incidencias</h2><span class="meta">5 preguntas</span></span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="catBody"><div class="faqList">
+        <button class="catBlock" type="button" data-modal="m-devoluciones"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h9a5.5 5.5 0 0 1 0 11h-4"></path><polyline points="7.5 5.5 4 9 7.5 12.5"></polyline></svg></span><span class="ct"><h2>Devoluciones e incidencias</h2><span class="meta">5 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+        <dialog class="catModal" id="m-devoluciones" aria-label="Devoluciones e incidencias">
+          <div class="catModal-in">
+            <div class="catModal-head"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h9a5.5 5.5 0 0 1 0 11h-4"></path><polyline points="7.5 5.5 4 9 7.5 12.5"></polyline></svg></span><h2 class="catModal-t">Devoluciones e incidencias</h2><button class="catModal-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button></div>
+            <div class="faqList">
             <details>
               <summary><h3>¿Puedo modificar o anular mi pedido?</h3><span class="pm" aria-hidden="true"></span></summary>
               <div class="faqAns"><p>Una vez realizado el pedido, dispone de 24 horas para cancelarlo o modificarlo. Para realizar cambios durante este período de 24 horas, ponte en contacto con nosotros enviando un correo a <a class="inl" href="mailto:info@rolscarpets.com">info@rolscarpets.com</a> o escríbenos un WhatsApp al +34 96 540 09 79 de lunes a viernes, de 10:00 a 17:00 CET. Respetaremos todos los cambios y cancelaciones realizados dentro del periodo de 24 horas.</p></div>
@@ -1052,13 +1099,16 @@
               <summary><h3>He recibido una alfombra dañada debido al transporte. ¿Qué hago?</h3><span class="pm" aria-hidden="true"></span></summary>
               <div class="faqAns"><p>Ponemos mucho cariño y empeño en la calidad de nuestras alfombras, pero entendemos que hay situaciones fuera del control del cliente que pueden afectar a su experiencia. En el caso de un daño en tu alfombra debido al transporte, es muy importante que, en el momento de la entrega, reflejes dicho daño en el albarán del transporte y aportes fotografías. No podemos atender reclamaciones por daños en el transporte si no se ha reflejado en el albarán del transportista en el momento de la entrega. Para más información, ponte en contacto con nosotros enviando un correo a <a class="inl" href="mailto:info@rolscarpets.com">info@rolscarpets.com</a> o escríbenos un WhatsApp al +34 96 540 09 79 de lunes a viernes, de 10:00 a 17:00 CET.</p></div>
             </details>
-          </div></div>
-        </details>
+            </div>
+          </div>
+        </dialog>
 
         <!-- 5 · Asistencia -->
-        <details class="catItem" id="asistencia">
-          <summary><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="3" y="13" width="4" height="6" rx="1.5"></rect><rect x="17" y="13" width="4" height="6" rx="1.5"></rect><path d="M20 19a4 4 0 0 1-4 3h-2"></path></svg></span><span class="ct"><h2>Asistencia y cuidados</h2><span class="meta">3 preguntas</span></span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="catBody"><div class="faqList">
+        <button class="catBlock" type="button" data-modal="m-asistencia"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="3" y="13" width="4" height="6" rx="1.5"></rect><rect x="17" y="13" width="4" height="6" rx="1.5"></rect><path d="M20 19a4 4 0 0 1-4 3h-2"></path></svg></span><span class="ct"><h2>Asistencia y cuidados</h2><span class="meta">3 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+        <dialog class="catModal" id="m-asistencia" aria-label="Asistencia y cuidados">
+          <div class="catModal-in">
+            <div class="catModal-head"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="3" y="13" width="4" height="6" rx="1.5"></rect><rect x="17" y="13" width="4" height="6" rx="1.5"></rect><path d="M20 19a4 4 0 0 1-4 3h-2"></path></svg></span><h2 class="catModal-t">Asistencia y cuidados</h2><button class="catModal-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button></div>
+            <div class="faqList">
             <details id="q-garantia">
               <summary><h3>¿Cuál es la garantía de las alfombras?</h3><span class="pm" aria-hidden="true"></span></summary>
               <div class="faqAns"><p>Todas las alfombras Rols tienen un período de garantía de cuatro (4) años contra cualquier defecto de material o de fabricación. Esta garantía no será aplicable en caso de daños por un uso incorrecto de acuerdo a las especificaciones del producto o falta de cuidados necesarios. Si necesitas más información, ponte en contacto con nosotros enviando un correo a <a class="inl" href="mailto:info@rolscarpets.com">info@rolscarpets.com</a> o escríbenos un WhatsApp al +34 96 540 09 79 de lunes a viernes, de 10:00 a 17:00 CET.</p></div>
@@ -1071,8 +1121,9 @@
               <summary><h3>¿Cuándo se repondrán los modelos agotados?</h3><span class="pm" aria-hidden="true"></span></summary>
               <div class="faqAns"><p>Intentamos tener stock permanente de todas nuestras colecciones. En el caso de agotarse una referencia, el plazo reposición aproximado es de 1 mes, aunque este período podría variar.</p></div>
             </details>
-          </div></div>
-        </details>
+            </div>
+          </div>
+        </dialog>
 
     </div>
   </section>
@@ -1340,6 +1391,25 @@
     });
     if (location.hash) { openTarget(location.hash); }
     window.addEventListener('hashchange', function () { openTarget(location.hash); });
+  })();
+</script>
+<script>
+  (function () {
+    var html = document.documentElement;
+    function lock(){ html.style.overflow = 'hidden'; }
+    function unlock(){ html.style.overflow = ''; }
+    document.querySelectorAll('.catBlock[data-modal]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var d = document.getElementById(b.getAttribute('data-modal'));
+        if (d && typeof d.showModal === 'function') { d.showModal(); lock(); }
+      });
+    });
+    document.querySelectorAll('dialog.catModal').forEach(function (d) {
+      d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+      d.addEventListener('close', unlock);
+      var x = d.querySelector('[data-close]');
+      if (x) x.addEventListener('click', function () { d.close(); });
+    });
   })();
 </script>
 </body>
