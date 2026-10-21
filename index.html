@@ -429,7 +429,7 @@
   @media (min-width:768px){ .ways{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px 32px; } }
   .ways .pilar{ height:100%; }
   .ways .pilar .t{ font-family:var(--display); font-weight:400; font-size:20px; letter-spacing:.01em; margin-top:16px; }
-  .ways .pilar .p{ margin-top:8px; font-size:12.5px; line-height:1.65; color:var(--muted); max-width:34ch; }
+  .ways .pilar .p{ margin-top:8px; font-size:12.5px; line-height:1.65; color:var(--muted); max-width:none; }
   .ways .pilar .arrow{ margin-top:auto; padding-top:16px; }
 
   /* ---------- footer ---------- */
@@ -790,7 +790,7 @@
   .popItem[open] .pm::after{ transform:scaleY(0); opacity:0; }
   .popItem .qans{ padding:0 24px 22px; }
   @media (min-width:600px){ .popItem .qans{ padding-left:58px; } }
-  .popItem .qans p{ font-size:13px; line-height:1.8; color:var(--muted); max-width:86ch; }
+  .popItem .qans p{ font-size:13px; line-height:1.8; color:var(--muted); max-width:none; }
   .popItem .qans a.inl{ color:var(--fg); text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--line-strong); }
   .popItem .qans b{ color:var(--fg); font-weight:500; }
 
@@ -846,7 +846,7 @@
   .catBlock .ct h2{ font-family:var(--display); font-weight:400; font-size:18px; line-height:1.2; letter-spacing:.01em; }
   .catBlock .ct .meta{ font-size:10px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
   .catBlock-go{ width:18px; height:18px; flex:none; color:var(--soft); transition:transform .25s ease, color .25s ease; }
-  .catBlock:hover .catBlock-go{ color:var(--fg); transform:translate(2px,-2px); }
+  .catBlock:hover .catBlock-go{ color:var(--fg); transform:translateX(3px); }
 
   .catModal{ border:0; padding:0; background:transparent; max-width:none; max-height:none; color:var(--fg); }
   .catModal::backdrop{ background:rgba(28,27,25,.55); }
@@ -954,7 +954,7 @@
       <a class="arrow" href="#categorias">Explora las preguntas por categoría <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="13 5 20 12 13 19"></polyline></svg></a>
     </div>
     <figure class="art">
-      <img src="https://www.rolscarpets.com/wp-content/uploads/2023/06/asesoramiento-interioristas.webp" alt="Asesoramiento de Rols: muestras de alfombra, carta de colores y plano sobre una mesa de trabajo" loading="eager" width="807" height="1080">
+      <img src="rols-moodboard-0006.webp" alt="Moodboard de Rols: alfombras, moquetas y muestras de tejido en una composición de materiales" loading="eager" width="1800" height="1200">
     </figure>
   </section>
 
@@ -1000,7 +1000,7 @@
     <div class="catGrid">
 
         <!-- 1 · Muestras -->
-        <button class="catBlock" type="button" data-modal="m-muestras"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"></rect></svg></span><span class="ct"><h2>Muestras de tejidos</h2><span class="meta">3 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+        <button class="catBlock" type="button" data-modal="m-muestras"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"></rect></svg></span><span class="ct"><h2>Muestras de tejidos</h2><span class="meta">3 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="13 5 20 12 13 19"></polyline></svg></button>
         <dialog class="catModal" id="m-muestras" aria-label="Muestras de tejidos">
           <div class="catModal-in">
             <div class="catModal-head"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"></rect></svg></span><h2 class="catModal-t">Muestras de tejidos</h2><button class="catModal-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button></div>
@@ -1022,7 +1022,7 @@
         </dialog>
 
         <!-- 2 · A medida -->
-        <button class="catBlock" type="button" data-modal="m-a-medida"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="8" width="19" height="8" rx="1.5"></rect><path d="M6.5 8v3M10 8v4M13.5 8v3M17 8v4"></path></svg></span><span class="ct"><h2>Alfombra a medida</h2><span class="meta">4 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+        <button class="catBlock" type="button" data-modal="m-a-medida"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="8" width="19" height="8" rx="1.5"></rect><path d="M6.5 8v3M10 8v4M13.5 8v3M17 8v4"></path></svg></span><span class="ct"><h2>Alfombra a medida</h2><span class="meta">4 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="13 5 20 12 13 19"></polyline></svg></button>
         <dialog class="catModal" id="m-a-medida" aria-label="Alfombra a medida">
           <div class="catModal-in">
             <div class="catModal-head"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="8" width="19" height="8" rx="1.5"></rect><path d="M6.5 8v3M10 8v4M13.5 8v3M17 8v4"></path></svg></span><h2 class="catModal-t">Alfombra a medida</h2><button class="catModal-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button></div>
@@ -1048,7 +1048,7 @@
         </dialog>
 
         <!-- 3 · Envíos -->
-        <button class="catBlock" type="button" data-modal="m-envios"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18" r="1.6"></circle><circle cx="17.5" cy="18" r="1.6"></circle></svg></span><span class="ct"><h2>Envíos</h2><span class="meta">4 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+        <button class="catBlock" type="button" data-modal="m-envios"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18" r="1.6"></circle><circle cx="17.5" cy="18" r="1.6"></circle></svg></span><span class="ct"><h2>Envíos</h2><span class="meta">4 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="13 5 20 12 13 19"></polyline></svg></button>
         <dialog class="catModal" id="m-envios" aria-label="Envíos">
           <div class="catModal-in">
             <div class="catModal-head"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18" r="1.6"></circle><circle cx="17.5" cy="18" r="1.6"></circle></svg></span><h2 class="catModal-t">Envíos</h2><button class="catModal-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button></div>
@@ -1074,7 +1074,7 @@
         </dialog>
 
         <!-- 4 · Devoluciones -->
-        <button class="catBlock" type="button" data-modal="m-devoluciones"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h9a5.5 5.5 0 0 1 0 11h-4"></path><polyline points="7.5 5.5 4 9 7.5 12.5"></polyline></svg></span><span class="ct"><h2>Devoluciones e incidencias</h2><span class="meta">5 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+        <button class="catBlock" type="button" data-modal="m-devoluciones"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h9a5.5 5.5 0 0 1 0 11h-4"></path><polyline points="7.5 5.5 4 9 7.5 12.5"></polyline></svg></span><span class="ct"><h2>Devoluciones e incidencias</h2><span class="meta">5 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="13 5 20 12 13 19"></polyline></svg></button>
         <dialog class="catModal" id="m-devoluciones" aria-label="Devoluciones e incidencias">
           <div class="catModal-in">
             <div class="catModal-head"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h9a5.5 5.5 0 0 1 0 11h-4"></path><polyline points="7.5 5.5 4 9 7.5 12.5"></polyline></svg></span><h2 class="catModal-t">Devoluciones e incidencias</h2><button class="catModal-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button></div>
@@ -1104,7 +1104,7 @@
         </dialog>
 
         <!-- 5 · Asistencia -->
-        <button class="catBlock" type="button" data-modal="m-asistencia"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="3" y="13" width="4" height="6" rx="1.5"></rect><rect x="17" y="13" width="4" height="6" rx="1.5"></rect><path d="M20 19a4 4 0 0 1-4 3h-2"></path></svg></span><span class="ct"><h2>Asistencia y cuidados</h2><span class="meta">3 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+        <button class="catBlock" type="button" data-modal="m-asistencia"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="3" y="13" width="4" height="6" rx="1.5"></rect><rect x="17" y="13" width="4" height="6" rx="1.5"></rect><path d="M20 19a4 4 0 0 1-4 3h-2"></path></svg></span><span class="ct"><h2>Asistencia y cuidados</h2><span class="meta">3 preguntas</span></span><svg class="catBlock-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="13 5 20 12 13 19"></polyline></svg></button>
         <dialog class="catModal" id="m-asistencia" aria-label="Asistencia y cuidados">
           <div class="catModal-in">
             <div class="catModal-head"><span class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><rect x="3" y="13" width="4" height="6" rx="1.5"></rect><rect x="17" y="13" width="4" height="6" rx="1.5"></rect><path d="M20 19a4 4 0 0 1-4 3h-2"></path></svg></span><h2 class="catModal-t">Asistencia y cuidados</h2><button class="catModal-x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button></div>
@@ -1168,6 +1168,7 @@
       <div class="heroCtas" style="justify-content:center;">
         <a class="arrow" href="https://www.rolscarpets.com/contacto/">Contacta con nosotros <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="13 5 20 12 13 19"></polyline></svg></a>
         <a class="arrow quiet" href="mailto:info@rolscarpets.com">info@rolscarpets.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"></line><polyline points="13 5 20 12 13 19"></polyline></svg></a>
+        <a class="arrow quiet" href="https://wa.me/34965400979" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="flex:none;"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.35z"></path><path d="M12.05 2.1c-5.46 0-9.9 4.43-9.9 9.89 0 1.74.46 3.45 1.33 4.95L2.1 21.9l5.06-1.33a9.86 9.86 0 004.73 1.2h.01c5.45 0 9.89-4.43 9.89-9.89a9.82 9.82 0 00-2.9-7 9.82 9.82 0 00-6.99-2.9zm0 18.06h-.01a8.2 8.2 0 01-4.18-1.15l-.3-.18-3.11.82.83-3.03-.2-.31a8.2 8.2 0 01-1.26-4.37c0-4.53 3.69-8.22 8.23-8.22 2.2 0 4.26.86 5.82 2.41a8.18 8.18 0 012.41 5.82c0 4.54-3.69 8.22-8.23 8.22z"></path></svg> WhatsApp</a>
       </div>
     </div>
   </section>
